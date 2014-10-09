@@ -47,21 +47,15 @@ public class MainActivity extends Activity {
     public void takeAPhoto() {
 		
     	String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/MyCameraTest";
-		File folder = new File(path);
-		
-		if (!folder.exists()){
-			folder.mkdir();
-		}
-			
-		String imagePathAndFileName = path + File.separator + 
-				String.valueOf(System.currentTimeMillis()) + ".jpg" ;
-		
-		File imageFile = new File(imagePathAndFileName);
-		imageFileUri = Uri.fromFile(imageFile);
-		
-		//TODO: Add your code here ...
-		//TODO: Add your code here ...
-		//TODO: Add your code here ...
+    	File folder = new File(path);
+    	if (!folder.exists())	
+    	folder.mkdir();
+    	String imagePathAndFileName = path + File.separator + String.valueOf(System.currentTimeMillis()) + ".jpg";
+    	File imageFile = new File(imagePathAndFileName);
+    	imageFileUri = Uri.fromFile(imageFile);
+    	Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    	intent.putExtra(MediaStore.EXTRA_OUTPUT, imageFileUri);
+    	startActivityForResult(intent, 12345);
 
     }
     
@@ -72,10 +66,9 @@ public class MainActivity extends Activity {
 			TextView tv = (TextView)findViewById(R.id.status);
 			
 			if (resultCode == RESULT_OK){
-			//TODO: Add your code here ...
-			//TODO: Add your code here ...
-			//TODO: Add your code here ...
-			//TODO: Add your code here ...
+				tv.setText("Photo completed!");
+				ImageButton ib = (ImageButton)findViewById(R.id.imageButton1);
+				ib.setImageDrawable(Drawable.createFromPath(imageFileUri.getPath()));
 			}
 			else
 				if (resultCode == RESULT_CANCELED){

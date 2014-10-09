@@ -89,10 +89,10 @@ public class BogoPicGenActivity extends Activity {
 	//The result should be saved in newBMP
 	//Also should be reflected in the imageButton
 	private void setBogoPic() {
-		//TODO: Add your code here:
-		//TODO: Add your code here:
-		//TODO: Add your code here:
-		//TODO: Add your code here:
+		Toast.makeText(this, "Generating Photo", Toast.LENGTH_LONG).show();
+		newBMP = BogoPicGen.generateBitmap(400, 400);
+		ImageButton ib = (ImageButton) findViewById(R.id.imageButton1);
+		ib.setImageBitmap(newBMP);
 	}
 	//----------------------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------
